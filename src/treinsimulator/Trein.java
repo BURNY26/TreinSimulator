@@ -22,4 +22,4 @@ public class Trein {
 }
 
 
-//opmerkingen: is richting hier niet overbodig want het zit eigelijk al in de var. l ?
+//opmerking: is richting hier niet overbodig want het zit eigelijk al in de var. l ?

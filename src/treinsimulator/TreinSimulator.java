@@ -11,9 +11,7 @@ package treinsimulator;
  */
 public class TreinSimulator {
 
-    /**
-     * @param args the command line arguments
-     */
+    // to do : readlists updaten
     public static void main(String[] args) {
         // TODO code application logic here
     }

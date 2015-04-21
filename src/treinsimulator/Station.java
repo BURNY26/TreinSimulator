@@ -12,5 +12,20 @@ package treinsimulator;
 // treden alleen actief op bij het bepalen van de volgende trein die een reiziger wil nemen
 // anders enkel nodig als verbindingspunt
 public class Station {
+    String stadsnaam;
+    int overstaptijd;
+    
+    public Station(String naam,int overstaptijd){
+        this.stadsnaam = naam;
+        this.overstaptijd=overstaptijd;
+    }
+
+    public String getStadsnaam() {
+        return stadsnaam;
+    }
+
+    public int getOverstaptijd() {
+        return overstaptijd;
+    }
     
 }
