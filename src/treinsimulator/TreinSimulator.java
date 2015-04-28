@@ -13,7 +13,8 @@ public class TreinSimulator {
 
     // to do : readlists updaten
     public static void main(String[] args) {
-        // nen dinges ,nen tak
+        DAO.readLists();
+        DAO.schrijfStations();
     }
     
 }
