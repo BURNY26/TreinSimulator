@@ -13,7 +13,7 @@ public class TreinSimulator {
 
     // to do : readlists updaten
     public static void main(String[] args) {
-        // TODO code application logic here
+        hfhfhhfhf;
     }
     
 }
