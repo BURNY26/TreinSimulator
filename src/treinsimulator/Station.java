@@ -5,6 +5,8 @@
  */
 package treinsimulator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Bernard
@@ -14,6 +16,7 @@ package treinsimulator;
 public class Station {
     String stadsnaam;
     int overstaptijd;
+    ArrayList<Station> buren;
     
     public Station(String naam,int overstaptijd){
         this.stadsnaam = naam;
@@ -26,6 +29,10 @@ public class Station {
 
     public int getOverstaptijd() {
         return overstaptijd;
+    }
+    
+    public ArrayList getBuren(){
+        return buren;
     }
     
 }
