@@ -20,16 +20,16 @@ public class Lijn {
     //A ,van voor naar achter in de lijst van haltes. B vice versa
     char richting;
 
-    
     private int capaciteit;
     private int zitplaatsen;
     private ArrayList<String> uurVertrek = new ArrayList<>();
     private ArrayList<String> uurPiekVertrek = new ArrayList<>();
-    private String[] reisduren;
+    private int[] reisduren;
 
-    public Lijn(){
-        
+    public Lijn() {
+
     }
+
     public Lijn(Lijn k) {
         id = k.id;
         id = 'B';
@@ -39,14 +39,14 @@ public class Lijn {
         for (int i = 0; i < haltes.length; i++) {
             haltes[i] = k.haltes[k.haltes.length - 1 - i];
         }
-        reisduren = new String[k.reisduren.length];
+        reisduren = new int[k.reisduren.length];
         for (int i = 0; i < reisduren.length; i++) {
             reisduren[i] = k.reisduren[k.reisduren.length - 1 - i];
         }
         uurVertrek = new ArrayList<>();
         for (String s : k.uurVertrek) {
             if (Integer.parseInt(s) == 0) {
-                uurVertrek.add(Integer.parseInt(s)+"");
+                uurVertrek.add(Integer.parseInt(s) + "");
             } else {
                 uurVertrek.add(60 - Integer.parseInt(s) + "");
             }
@@ -64,6 +64,7 @@ public class Lijn {
             }
         }
     }
+
     public int getId() {
         return id;
     }
@@ -128,13 +129,32 @@ public class Lijn {
         this.uurPiekVertrek = uurPiekVertrek;
     }
 
-    public String[] getReisduren() {
+    public int[] getReisduren() {
         return reisduren;
     }
 
-    public void setReisduren(String[] reisduren) {
+    public void setReisduren(int[] reisduren) {
         this.reisduren = reisduren;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        String zin = "\nLijn " + id + " rijdt over volgende trajecten:\n ";
+        int j = 0;
+        for (int i = 0; i < haltes.length - 1; i++) {
+            zin += "\t" + haltes[i].getStadsnaam() + "=>" + haltes[i + 1].getStadsnaam() + " voor een duur van " + reisduren[j] + " minuten.\n";
+            j++;
+        }
+        zin += "\ncapaciteit :" + capaciteit + "\n";
+        zin += "zitplaatsen: " + zitplaatsen + "\n";
+        zin += "en rijdt om : \n";
+        for (String i : uurVertrek) {
+            zin += i + "u,";
+        }
+        zin += "\nEn heeft ook de volgende piekdiensten:\n ";
+        for (String i : uurPiekVertrek) {
+            zin += i + ",";
+        }
+        return zin;
+    }
 }
