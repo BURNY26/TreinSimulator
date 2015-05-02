@@ -13,4 +13,9 @@ package treinsimulator;
 public class Segment {
     Station vertrekStation;
     Station eindStation;
+    
+    @Override
+    public String toString(){
+        return ("Segment : "+vertrekStation.getStadsnaam()+"==>"+eindStation.getStadsnaam());
+    }
 }
