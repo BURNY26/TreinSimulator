@@ -5,6 +5,9 @@
  */
 package treinsimulator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Bernard
@@ -13,4 +16,22 @@ package treinsimulator;
 public class Segment {
     Station vertrekStation;
     Station eindStation;
+    Lijn lijn;
+    Segment volgendSegment;
+    Segment vorigSegment;
+    Set<Segmentdata> data = new HashSet<>();
+    
+    public Segment geefVolgendeSegment(char richting){
+        if(richting == 'A'){
+            return volgendSegment;
+        }
+        else{
+            return vorigSegment;
+        }
+    }
+
+    void setData(Segmentdata sd) {
+        data.add(sd);
+    }
+    
 }

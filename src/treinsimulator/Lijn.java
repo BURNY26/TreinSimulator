@@ -20,13 +20,12 @@ public class Lijn {
     //A ,van voor naar achter in de lijst van haltes. B vice versa
     char richting;
 
-    
     private int capaciteit;
     private int zitplaatsen;
     private ArrayList<String> uurVertrek = new ArrayList<>();
     private ArrayList<String> uurPiekVertrek = new ArrayList<>();
     private String[] reisduren;
-
+    public ArrayList<Trein> treinen =  new ArrayList<>();
     public Lijn(){
         
     }
@@ -64,77 +63,27 @@ public class Lijn {
             }
         }
     }
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Station[] getHaltes() {
         return haltes;
     }
-
+    
+    public Segment geefEersteSegment(char richting){
+        if(richting == 'A'){
+            return segmenten[0];
+        }
+        else{
+            return segmenten[segmenten.length-1];
+        }
+    }
+    
     public void setHaltes(Station[] haltes) {
         this.haltes = haltes;
     }
-
-    public Segment[] getSegmenten() {
-        return segmenten;
+    public ArrayList<Trein> getTreinen() {
+        return treinen;
     }
+    
 
-    public void setSegmenten(Segment[] segmenten) {
-        this.segmenten = segmenten;
-    }
-
-    public char getRichting() {
-        return richting;
-    }
-
-    public void setRichting(char richting) {
-        this.richting = richting;
-    }
-
-    public int getCapaciteit() {
-        return capaciteit;
-    }
-
-    public void setCapaciteit(int capaciteit) {
-        this.capaciteit = capaciteit;
-    }
-
-    public int getZitplaatsen() {
-        return zitplaatsen;
-    }
-
-    public void setZitplaatsen(int zitplaatsen) {
-        this.zitplaatsen = zitplaatsen;
-    }
-
-    public ArrayList<String> getUurVertrek() {
-        return uurVertrek;
-    }
-
-    public void setUurVertrek(ArrayList<String> uurVertrek) {
-        this.uurVertrek = uurVertrek;
-    }
-
-    public ArrayList<String> getUurPiekVertrek() {
-        return uurPiekVertrek;
-    }
-
-    public void setUurPiekVertrek(ArrayList<String> uurPiekVertrek) {
-        this.uurPiekVertrek = uurPiekVertrek;
-    }
-
-    public String[] getReisduren() {
-        return reisduren;
-    }
-
-    public void setReisduren(String[] reisduren) {
-        this.reisduren = reisduren;
-    }
     
     
 }

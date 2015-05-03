@@ -20,7 +20,25 @@ public class DAO {
     
     private static ArrayList<Station> stationLijst = new ArrayList<>();
     private static ArrayList<Lijn> lijnenLijst = new ArrayList<>();
+    private static ArrayList<Reiziger>  reizigerLijst = new ArrayList<>();
     
     public static void readLists() {
+        
     }
+    public Station getTrein(int i){
+        return stationLijst.get(i);
+    }
+
+    public static ArrayList<Station> getStationLijst() {
+        return stationLijst;
+    }
+
+    public static ArrayList<Lijn> getLijnenLijst() {
+        return lijnenLijst;
+    }
+
+    public static ArrayList<Reiziger> getReizigerLijst() {
+        return reizigerLijst;
+    }
+    
 }
