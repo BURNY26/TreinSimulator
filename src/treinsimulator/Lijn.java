@@ -63,6 +63,22 @@ public class Lijn {
                 uurPiekVertrek.add(nieuwePiek + "");
             }
         }
+        k.maakSegmenten(); //segmenten in B-richting aanmaken
+    }
+    
+    public Segment maakSegment(Station s1, Station s2, char richting){
+        Segment seg = new Segment(s1, s2, richting);
+        return seg;
+    }
+    
+    public void maakSegmenten(){
+        int aantal= this.getHaltes().length-1;
+        Segment[] segArray = new Segment[aantal];
+        for(int i=0; i<=(this.getHaltes().length)-2;i++){
+            Segment seg = new Segment(this.haltes[i],this.haltes[i+1], this.richting);
+            segArray[i]=seg;
+        }
+        this.setSegmenten(segArray);
     }
 
     public int getId() {
