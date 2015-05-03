@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * @author Bernard
  */
 public class DAO {
-
+    private static ArrayList<Trein> treinLijst = new ArrayList<>();
     private static ArrayList<Station> stationLijst = new ArrayList<>();
     private static ArrayList<Lijn> lijnenLijst = new ArrayList<>();
 

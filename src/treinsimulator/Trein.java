@@ -14,11 +14,22 @@ package treinsimulator;
 public class Trein {
 
 //vtijd geeft aan op welk tijdstip de volgende gebeurtenis plaatsvindt
-    int vtijd;
+    String vtijd;
+    String vertrekuur;
     Lijn l;
     //richting kan oftewel 'A' of 'B' zijn 
     //A ,van voor naar achter in de lijst van stations. B vice versa
     char richting;
+    
+    public Trein(){
+        
+    }
+    
+    public Trein(Lijn l, char r, String vertrekuur){
+        this.l = l;
+        richting = r;
+        this.vertrekuur = vertrekuur;
+    }
 }
 
 

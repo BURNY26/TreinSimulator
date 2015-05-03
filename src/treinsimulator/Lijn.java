@@ -80,6 +80,19 @@ public class Lijn {
         }
         this.setSegmenten(segArray);
     }
+    
+    public ArrayList<Trein> maakTreinen(){ //arrayList van treinen die moet worden doorgegeven aan de DAO
+        ArrayList<Trein> treinen = new ArrayList<>();
+       for(String uur: uurVertrek){
+           Trein tr = new Trein(this, this.richting, uur);
+           treinen.add(tr);
+       }
+       for(String uur: uurPiekVertrek){
+           Trein tr = new Trein(this, this.richting, uur);
+           treinen.add(tr);
+       }
+       return treinen;
+    }
 
     public int getId() {
         return id;
