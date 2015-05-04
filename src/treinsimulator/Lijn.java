@@ -75,15 +75,16 @@ public class Lijn {
             return segmenten[segmenten.length-1];
         }
     }
-    
-    public void setHaltes(Station[] haltes) {
-        this.haltes = haltes;
+    public int getZitplaatsen(){
+        return zitplaatsen;
     }
     public ArrayList<Trein> getTreinen() {
         return treinen;
     }
+    public Kruising getKruising(){ //Moet op een of andere manier door een passagier gevraagd worden aan Lijn
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     
-
     
     
 }

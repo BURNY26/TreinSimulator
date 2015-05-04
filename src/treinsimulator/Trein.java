@@ -47,12 +47,21 @@ public class Trein {
         }
     }
 
-    boolean opstappen(Reiziger aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    boolean opstappen(Reiziger r) {
+        if(inzittenden.size() < lijn.getZitplaatsen()){
+            inzittenden.add(r);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     Kruising getKruising() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public Lijn getLijn(){
+        return lijn;
     }
 }
 
