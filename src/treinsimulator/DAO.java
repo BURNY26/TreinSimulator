@@ -58,8 +58,8 @@ public class DAO {
             }
             uurregelingstekst = uurregelingstekst.replaceAll("\\\\", "");
             String[] lijnen = uurregelingstekst.split("\\[Lijn\\]");
-            for (int i=1;i<lijnen.length;i++) {
-                Lijn l =verwerkLijnParagraaf(lijnen[i].replaceAll(" ", ""));
+            for (int i = 1; i < lijnen.length; i++) {
+                Lijn l = verwerkLijnParagraaf(lijnen[i].replaceAll(" ", ""));
                 lijnenLijst.add(l);
                 lijnenLijst.add(new Lijn(l));
             }
@@ -70,12 +70,33 @@ public class DAO {
         }
     }
 
+    private static void maakStations(BufferedReader br) throws IOException {
+        String huidig = br.readLine();
+            // alle tekst tussen [Stations] en [Uurregeling] wordt in één string 
+        //gestoken en daarna verwerkt zodat stationslijst geïnit kan worden
+        String stationstekst = "";
+        while (!huidig.contains("[Uurregeling]")) {
+            if (!huidig.contains(";") && !huidig.isEmpty()) {
+                stationstekst += huidig;
+            }
+            huidig = br.readLine();
+        }
+        stationstekst = stationstekst.replaceAll("\\\\", "");
+        String[] lines = stationstekst.split("min");
+        for (String s : lines) {
+            s = s.trim();
+            String[] lines2 = s.split(" ");
+            stationLijst.add(new Station(lines2[0], Integer.parseInt(lines2[1])));
+        }
+    }
+
     //neemt een ganse lijnparagraaf ,analyseert ze en geeft een uitgewerkt lijnobj terug
+
     private static Lijn verwerkLijnParagraaf(String s) {
         Lijn l = new Lijn();
         l.setRichting('A');
-        l.setId(Integer.parseInt(s.substring(s.indexOf("nummer=")+7,s.indexOf("traject="))));
-        String[] stationsnamen = s.substring(s.indexOf("traject=")+8,s.indexOf("Tijden=")).split("->");
+        l.setId(Integer.parseInt(s.substring(s.indexOf("nummer=") + 7, s.indexOf("traject="))));
+        String[] stationsnamen = s.substring(s.indexOf("traject=") + 8, s.indexOf("Tijden=")).split("->");
         Station[] haltes = new Station[stationsnamen.length];
         for (int i = 0; i < stationsnamen.length; i++) {
             Segment seg = new Segment();
@@ -85,27 +106,27 @@ public class DAO {
                 }
             }
         }
-        Segment[] segmentarray = new Segment[stationsnamen.length-1];
-        for (int i =0;i<segmentarray.length;i++){
+        Segment[] segmentarray = new Segment[stationsnamen.length - 1];
+        for (int i = 0; i < segmentarray.length; i++) {
             Segment seg = new Segment();
-            seg.vertrekStation=haltes[i];
-            seg.eindStation=haltes[i+1];
-            segmentarray[i]=seg;
+            seg.vertrekStation = haltes[i];
+            seg.eindStation = haltes[i + 1];
+            segmentarray[i] = seg;
         }
         l.setSegmenten(segmentarray);
         l.setHaltes(haltes);
-        String[] reisdurenInString = s.substring(s.indexOf("Tijden=")+7,s.indexOf("CapaciteitPerTrein=")).split("\\+");
+        String[] reisdurenInString = s.substring(s.indexOf("Tijden=") + 7, s.indexOf("CapaciteitPerTrein=")).split("\\+");
         int[] reisduren = new int[reisdurenInString.length];
         for (int i = 0; i < reisdurenInString.length; i++) {
             reisduren[i] = Integer.parseInt(reisdurenInString[i]);
         }
         l.setReisduren(reisduren);
-        l.setCapaciteit(Integer.parseInt(s.substring(s.indexOf("CapaciteitPerTrein=")+19,s.indexOf("ZitplaatsenPerTrein="))));
-        l.setZitplaatsen(Integer.parseInt(s.substring(s.indexOf("ZitplaatsenPerTrein=")+20,s.indexOf("UurvasteDienst="))));
-        for (String uur : s.substring(s.indexOf("UurvasteDienst=")+16,s.indexOf("Piekuurtreinen=")).split(",")) {
+        l.setCapaciteit(Integer.parseInt(s.substring(s.indexOf("CapaciteitPerTrein=") + 19, s.indexOf("ZitplaatsenPerTrein="))));
+        l.setZitplaatsen(Integer.parseInt(s.substring(s.indexOf("ZitplaatsenPerTrein=") + 20, s.indexOf("UurvasteDienst="))));
+        for (String uur : s.substring(s.indexOf("UurvasteDienst=") + 16, s.indexOf("Piekuurtreinen=")).split(",")) {
             l.getUurVertrek().add(uur.substring(uur.indexOf("+")));
         }
-        for (String uur : s.substring(s.indexOf("Piekuurtreinen=")+15).split(",")) {
+        for (String uur : s.substring(s.indexOf("Piekuurtreinen=") + 15).split(",")) {
             l.getUurPiekVertrek().add(uur.replace("u", ""));
         }
         return l;
@@ -116,9 +137,9 @@ public class DAO {
             System.out.println(s.getStadsnaam() + " heeft " + s.getOverstaptijd() + " min overstaptijd.\n");
         }
     }
-    
-    public static void schrijfLijnen(){
-        for (Lijn l : lijnenLijst){
+
+    public static void schrijfLijnen() {
+        for (Lijn l : lijnenLijst) {
             System.out.println(l.toString());
         }
     }
