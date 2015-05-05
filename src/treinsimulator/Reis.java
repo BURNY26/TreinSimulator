@@ -16,4 +16,22 @@ public class Reis {
     int aantalGestrandeReizigers;
     // totaal aantal minuten reisweg voor alle reizigers samen
     int totaleReiswegTijd;
+    String naamVertrekStation;
+    String naamDoelStation;
+    
+    public String getNaamVertrekStation() {
+        return naamVertrekStation;
+    }
+
+    public String getNaamDoelStation() {
+        return naamDoelStation;
+    }
+
+    public int getAantalGestrandeReizigers() {
+        return aantalGestrandeReizigers;
+    }
+
+    public int getAantalReizigers() {
+        return aantalReizigers;
+    }
 }
