@@ -5,6 +5,9 @@
  */
 package treinsimulator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Bernard
@@ -13,11 +16,13 @@ package treinsimulator;
 // anders enkel nodig als verbindingspunt
 public class Station {
     String stadsnaam;
+    Set<Station> buren;
     int overstaptijd;
     
     public Station(String naam,int overstaptijd){
         this.stadsnaam = naam;
         this.overstaptijd=overstaptijd;
+        buren = new HashSet<>();
     }
 
     public String getStadsnaam() {

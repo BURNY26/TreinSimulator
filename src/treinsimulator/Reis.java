@@ -16,4 +16,9 @@ public class Reis {
     int aantalGestrandeReizigers;
     // totaal aantal minuten reisweg voor alle reizigers samen
     int totaleReiswegTijd;
+    
+    void voegGestrandeReizigerToe(Reiziger r){
+        
+    }
+    
 }

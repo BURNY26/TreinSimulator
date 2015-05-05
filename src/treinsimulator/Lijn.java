@@ -24,6 +24,9 @@ public class Lijn {
     private int zitplaatsen;
     private ArrayList<String> uurVertrek = new ArrayList<>();
     private ArrayList<String> uurPiekVertrek = new ArrayList<>();
+    
+    public ArrayList<Trein> treinen =  new ArrayList<>();
+        
     private int[] reisduren;
 
     public Lijn() {
@@ -94,6 +97,22 @@ public class Lijn {
        return treinen;
     }
 
+    public void setHaltes(Station[] haltes) {
+        this.haltes = haltes;
+    }
+
+    public void setSegmenten(Segment[] segmenten) {
+        this.segmenten = segmenten;
+    }
+
+    public void setCapaciteit(int capaciteit) {
+        this.capaciteit = capaciteit;
+    }
+
+    public void setZitplaatsen(int zitplaatsen) {
+        this.zitplaatsen = zitplaatsen;
+    }
+
     public int getId() {
         return id;
     }
@@ -105,45 +124,23 @@ public class Lijn {
     public Station[] getHaltes() {
         return haltes;
     }
-
-    public void setHaltes(Station[] haltes) {
-        this.haltes = haltes;
+    
+    public Segment geefEersteSegment(char richting){
+        if(richting == 'A'){
+            return segmenten[0];
+        }
+        else{
+            return segmenten[segmenten.length-1];
+        }
     }
-
-    public Segment[] getSegmenten() {
-        return segmenten;
-    }
-
-    public void setSegmenten(Segment[] segmenten) {
-        this.segmenten = segmenten;
-    }
-
-    public char getRichting() {
-        return richting;
-    }
-
-    public void setRichting(char richting) {
-        this.richting = richting;
-    }
-
-    public int getCapaciteit() {
-        return capaciteit;
-    }
-
-    public void setCapaciteit(int capaciteit) {
-        this.capaciteit = capaciteit;
-    }
-
-    public int getZitplaatsen() {
+    public int getZitplaatsen(){
         return zitplaatsen;
     }
-
-    public void setZitplaatsen(int zitplaatsen) {
-        this.zitplaatsen = zitplaatsen;
+    public ArrayList<Trein> getTreinen() {
+        return treinen;
     }
-
-    public ArrayList<String> getUurVertrek() {
-        return uurVertrek;
+    public Kruising getKruising(){ //Moet op een of andere manier door een passagier gevraagd worden aan Lijn
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public void setUurVertrek(ArrayList<String> uurVertrek) {
@@ -164,6 +161,10 @@ public class Lijn {
 
     public void setReisduren(int[] reisduren) {
         this.reisduren = reisduren;
+    }
+
+    public ArrayList<String> getUurVertrek() {
+        return uurVertrek;
     }
 
     @Override

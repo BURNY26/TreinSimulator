@@ -22,7 +22,8 @@ public class DAO {
     private static ArrayList<Trein> treinLijst = new ArrayList<>();
     private static ArrayList<Station> stationLijst = new ArrayList<>();
     private static ArrayList<Lijn> lijnenLijst = new ArrayList<>();
-
+    private static ArrayList<Reiziger>  reizigerLijst = new ArrayList<>();
+    
     public static void readLists() {
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File("stationlijst.ini")));
@@ -68,6 +69,22 @@ public class DAO {
             System.out.println("Probleem met het inlezen van een .ini bestand.");
         }
     }
+    public Station getTrein(int i){
+        return stationLijst.get(i);
+    }
+
+    public static ArrayList<Station> getStationLijst() {
+        return stationLijst;
+    }
+
+    public static ArrayList<Lijn> getLijnenLijst() {
+        return lijnenLijst;
+    }
+
+    public static ArrayList<Reiziger> getReizigerLijst() {
+        return reizigerLijst;
+    }
+    
 
     private static Lijn verwerkLijnParagraaf(String s) {
         Lijn l = new Lijn();
