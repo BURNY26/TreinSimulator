@@ -34,4 +34,8 @@ public class Reis {
     public int getAantalReizigers() {
         return aantalReizigers;
     }
+    
+    public int berekenWachttijdInReis(String vertrek, String doel){ //nog niet af
+        return 0;
+    }
 }
